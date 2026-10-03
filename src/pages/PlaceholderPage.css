@@ -1,0 +1,25 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.placeholder-heading h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c2e33;
+}
+
+.placeholder-card {
+  background: #fff;
+  border-radius: 0.55rem;
+  box-shadow: 0 2px 10px rgba(40, 44, 63, 0.05);
+  padding: 1.25rem;
+}
+
+.placeholder-card p {
+  margin: 0;
+  color: #8c8e96;
+  font-weight: 500;
+}

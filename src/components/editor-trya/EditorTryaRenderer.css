@@ -1,0 +1,108 @@
+.et-renderer {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.et-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.et-component h1,
+.et-component h2,
+.et-component h3,
+.et-component h4,
+.et-component h5,
+.et-component h6 {
+  margin: 0;
+}
+
+.et-text p {
+  margin: 0 0 0.75rem;
+}
+
+.et-image-wrap {
+  width: 100%;
+}
+
+.et-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.et-button-wrap {
+  width: 100%;
+}
+
+.et-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.4rem;
+  background: #9a55f0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.et-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+.et-divider-line {
+  flex: 1 1 auto;
+  min-width: 1rem;
+  border: 0;
+  border-top: 1px solid #d5d7e2;
+}
+
+.et-divider-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.et-divider-text {
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.et-quote {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid #9a55f0;
+  background: #faf5ff;
+  color: #2c2e33;
+}
+
+.et-quote cite {
+  display: block;
+  margin-top: 0.45rem;
+  color: #8c8e96;
+  font-size: 0.85rem;
+}
+
+.et-placeholder {
+  padding: 1rem;
+  border: 1px dashed #d5d7e2;
+  border-radius: 0.45rem;
+  color: #8c8e96;
+  text-align: center;
+  font-weight: 600;
+}

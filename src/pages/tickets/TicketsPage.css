@@ -1,0 +1,137 @@
+.tickets-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.tickets-heading h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.55rem;
+}
+
+.tickets-heading p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.tickets-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tickets-filters button,
+.tickets-actions button,
+.tickets-reply button {
+  border: 1px solid #d5d7e2;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 650;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.tickets-filters button.is-active,
+.tickets-actions button.is-active {
+  border-color: #c9a227;
+  background: #fbf6e8;
+  color: #1a1404;
+}
+
+.tickets-layout {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.tickets-list,
+.tickets-detail {
+  border: 1px solid #e6e7ee;
+  background: #fff;
+  border-radius: 0.9rem;
+}
+
+.tickets-list button.ticket-row {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-bottom: 1px solid #f0f1f5;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+}
+
+.tickets-list button.ticket-row.is-selected {
+  background: #fbf6e8;
+}
+
+.ticket-row strong {
+  font-size: 0.95rem;
+}
+
+.ticket-row span,
+.tickets-meta {
+  color: #6b7280;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.tickets-detail {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.tickets-detail h2 {
+  margin: 0.4rem 0 0;
+  font-size: 1.25rem;
+}
+
+.tickets-body,
+.ticket-reply p {
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+
+.ticket-reply {
+  margin-top: 0.7rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.7rem;
+  background: #f7f1e4;
+}
+
+.ticket-reply.is-user {
+  background: #f4f5f8;
+}
+
+.tickets-reply textarea,
+.tickets-empty {
+  width: 100%;
+}
+
+.tickets-reply textarea {
+  margin-top: 0.7rem;
+  min-height: 6rem;
+  border: 1px solid #d5d7e2;
+  border-radius: 0.7rem;
+  padding: 0.7rem;
+  font: inherit;
+}
+
+.tickets-error {
+  color: #b42318;
+  margin: 0;
+}
+
+.tickets-empty {
+  padding: 1.5rem 1rem;
+  color: #6b7280;
+}
+
+@media (max-width: 860px) {
+  .tickets-layout {
+    grid-template-columns: 1fr;
+  }
+}

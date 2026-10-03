@@ -1,0 +1,259 @@
+.comments-page {
+  display: grid;
+  gap: 1rem;
+}
+
+.comments-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.comments-heading h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.55rem;
+}
+
+.comments-heading p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.comments-refresh-btn {
+  border: 1px solid #d5d7e2;
+  background: #fff;
+  border-radius: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.comments-refresh-btn:hover {
+  border-color: #9a55f0;
+  color: #7c3aed;
+}
+
+.comments-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.comments-stat {
+  border: 1px solid #e4e6ef;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  text-align: start;
+  cursor: pointer;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.comments-stat strong {
+  font-size: 1.25rem;
+  color: #1f2330;
+}
+
+.comments-stat span {
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.comments-stat.is-active {
+  border-color: #9a55f0;
+  box-shadow: 0 0 0 1px #9a55f0 inset;
+}
+
+.comments-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.comments-search {
+  flex: 1;
+  border: 1px solid #d5d7e2;
+  border-radius: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.comments-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 0.9rem;
+}
+
+.comments-muted {
+  margin: 0;
+  color: #8c8e96;
+}
+
+.comments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.comments-card {
+  border: 1px solid #e4e6ef;
+  border-radius: 0.55rem;
+  background: #fff;
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.comments-card.status-pending {
+  border-color: #f0c36d;
+  background: #fffaf0;
+}
+
+.comments-card.status-rejected {
+  border-color: #f0b4b0;
+  background: #fff7f6;
+}
+
+.comments-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.comments-card-author {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.comments-card-author strong {
+  color: #1f2330;
+}
+
+.comments-card-author span {
+  color: #8c8e96;
+  font-size: 0.8rem;
+}
+
+.comments-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.comments-badge.status-pending {
+  background: #ffe8b8;
+  color: #8a5a00;
+}
+
+.comments-badge.status-approved {
+  background: #dff5e5;
+  color: #17663a;
+}
+
+.comments-badge.status-rejected {
+  background: #fde0dc;
+  color: #9b1c1c;
+}
+
+.comments-body {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #2c2e33;
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+.comments-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  color: #8c8e96;
+  font-size: 0.78rem;
+}
+
+.comments-dot {
+  opacity: 0.7;
+}
+
+.comments-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.comments-parent-link {
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.comments-parent-link:hover {
+  text-decoration: underline;
+}
+
+.comments-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.comments-actions button,
+.comments-link-btn {
+  border: 1px solid #d5d7e2;
+  background: #fff;
+  color: #2c2e33;
+  border-radius: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.comments-actions button:hover:not(:disabled),
+.comments-link-btn:hover {
+  border-color: #9a55f0;
+  color: #7c3aed;
+}
+
+.comments-actions button.is-warn:hover:not(:disabled) {
+  border-color: #d97706;
+  color: #b45309;
+}
+
+.comments-actions button.is-danger:hover:not(:disabled) {
+  border-color: #e11d48;
+  color: #be123c;
+}
+
+.comments-actions button.is-muted {
+  color: #6b7280;
+}
+
+.comments-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+  .comments-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .comments-heading {
+    flex-direction: column;
+  }
+}
