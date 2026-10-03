@@ -1,0 +1,6 @@
+services:
+  control-center:
+    image: ${CONTROL_CENTER_IMAGE:?Set CONTROL_CENTER_IMAGE to the published Control Center container image}
+    ports:
+      - "${CONTROL_CENTER_PORT:-8080}:80"
+    restart: unless-stopped
