@@ -88,6 +88,9 @@ const fa: Record<string, string> = {
   'Replace image': 'جایگزینی تصویر', 'Choose thumbnail': 'انتخاب تصویر بندانگشتی', 'Gallery images': 'تصاویر گالری',
   'Gallery media': 'رسانه‌های گالری', 'Gallery thumbnail': 'تصویر بندانگشتی گالری', 'Post thumbnail': 'تصویر بندانگشتی نوشته',
   'Group thumbnail': 'تصویر بندانگشتی گروه', 'Media file': 'فایل رسانه', 'Upload file': 'بارگذاری فایل',
+  'Show post timestamps': 'نمایش زمان نوشته‌ها',
+  'Show publish dates for posts in this group on the website': 'تاریخ انتشار نوشته‌های این گروه را در وب‌سایت نشان بده',
+  'Display': 'نمایش',
   'Replace file': 'جایگزینی فایل', 'Image': 'تصویر', 'Video And Audio': 'ویدیو و صدا', 'Audio track': 'قطعه صوتی',
   'YouTube link': 'پیوند یوتیوب', 'YouTube URL': 'نشانی یوتیوب', 'Image file': 'فایل تصویر',
   'Details': 'جزئیات', 'Details & Publish': 'جزئیات و انتشار', 'SEO': 'سئو', 'Meta title': 'عنوان متا',
@@ -139,35 +142,41 @@ const fa: Record<string, string> = {
 const en = Object.fromEntries(Object.entries(fa).map(([english, persian]) => [persian, english]))
 const attributes = ['placeholder', 'title', 'aria-label'] as const
 
+/** Areas that hold CMS / user content — never rewrite their text for UI locale. */
+const SKIP_UI_TRANSLATE =
+  'script, style, code, textarea, input, select, option, [contenteditable="true"], .ProseMirror, .et-builder, .et-html-editor, .et-text-preview, .et-renderer, [data-no-ui-translate]'
+
 function translate(value: string, locale: UiLocale): string {
   const dictionary = locale === 'fa' ? fa : en
   const exact = dictionary[value.trim()]
   if (exact) return value.replace(value.trim(), exact)
 
-  // Dynamic labels often contain counts. Translate their stable UI words while
-  // preserving numbers and user-provided values.
+  // Only rewrite multi-word UI phrases inside dynamic labels (e.g. "Delete selected (3)").
+  // Single words like "Group" must not be replaced inside editor prose.
   let result = value
   const entries = Object.entries(dictionary).sort(([a], [b]) => b.length - a.length)
   for (const [source, target] of entries) {
-    if (source.length < 4 || !result.includes(source)) continue
+    if (!source.includes(' ') || source.length < 8 || !result.includes(source)) continue
     result = result.split(source).join(target)
   }
   return result
 }
 
 function localize(root: ParentNode, locale: UiLocale) {
+  if (root instanceof Element && root.closest(SKIP_UI_TRANSLATE)) return
+
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
   let node: Node | null
   while ((node = walker.nextNode())) {
     const parent = node.parentElement
-    if (!parent || parent.closest('script, style, code, [data-no-ui-translate]')) continue
+    if (!parent || parent.closest(SKIP_UI_TRANSLATE)) continue
     const next = translate(node.nodeValue ?? '', locale)
     if (next !== node.nodeValue) node.nodeValue = next
   }
 
   const elements = root instanceof Element ? [root, ...root.querySelectorAll('*')] : [...root.querySelectorAll('*')]
   for (const element of elements) {
-    if (element.closest('[data-no-ui-translate]')) continue
+    if (element.closest(SKIP_UI_TRANSLATE)) continue
     for (const attribute of attributes) {
       const value = element.getAttribute(attribute)
       if (value) element.setAttribute(attribute, translate(value, locale))

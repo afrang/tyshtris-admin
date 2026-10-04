@@ -15,6 +15,7 @@ export type BlogGroup = {
   keyword: string | null
   description: string | null
   parentId: string | null
+  showTimestamp: boolean
   languagePrefix?: string | null
 }
 
@@ -28,6 +29,7 @@ export type CreateBlogGroupInput = {
   keyword?: string | null
   description?: string | null
   parentId?: string | null
+  showTimestamp?: boolean
 }
 
 export type RelatedItem = {

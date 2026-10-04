@@ -285,7 +285,7 @@ function ContainerRenderer({
 export function EditorTryaRenderer({ tree, mediaMap }: Props) {
   if (!tree.publish) return null
   return (
-    <div className="et-renderer" translate="no">
+    <div className="et-renderer notranslate" translate="no" data-no-ui-translate>
       {tree.containers
         .slice()
         .sort((a, b) => a.ordered - b.ordered)

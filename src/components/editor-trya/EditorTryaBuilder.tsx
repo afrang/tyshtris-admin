@@ -496,7 +496,7 @@ export function EditorTryaBuilder({
   }
 
   return (
-    <div className="et-builder" translate="no">
+    <div className="et-builder notranslate" translate="no" data-no-ui-translate>
       <div className="et-builder-toolbar">
         <div>
           <h3>EditorTrya</h3>
@@ -946,8 +946,9 @@ function ComponentPreview({
       if (selected && onChange) {
         return (
           <div
-            className="et-text-canvas-editor"
+            className="et-text-canvas-editor notranslate"
             translate="no"
+            data-no-ui-translate
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => e.stopPropagation()}
           >
@@ -969,8 +970,9 @@ function ComponentPreview({
       }
       return (
         <div
-          className="et-text-preview"
+          className="et-text-preview notranslate"
           translate="no"
+          data-no-ui-translate
           dangerouslySetInnerHTML={{ __html: String(data.html || '<em>Empty text</em>') }}
         />
       )

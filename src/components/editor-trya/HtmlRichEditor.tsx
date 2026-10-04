@@ -81,9 +81,10 @@ export function HtmlRichEditor({ value, onChange, placeholder = 'Write contentâ€
     textDirection: 'auto',
     editorProps: {
       attributes: {
-        class: 'et-html-prose',
+        class: 'et-html-prose notranslate',
         translate: 'no',
         spellcheck: 'false',
+        'data-no-ui-translate': 'true',
       },
     },
     onUpdate: ({ editor: current }) => {
@@ -148,7 +149,7 @@ export function HtmlRichEditor({ value, onChange, placeholder = 'Write contentâ€
   }
 
   return (
-    <div className="et-html-editor" translate="no">
+    <div className="et-html-editor notranslate" translate="no" data-no-ui-translate>
       <div className="et-html-toolbar" role="toolbar" aria-label="HTML editor tools">
         <ToolbarBtn
           title="Bold"

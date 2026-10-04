@@ -66,6 +66,7 @@ export function BlogGroupEditorPage() {
   const [keyword, setKeyword] = useState('')
   const [description, setDescription] = useState('')
   const [parentId, setParentId] = useState(() => searchParams.get('parentId') ?? '')
+  const [showTimestamp, setShowTimestamp] = useState(true)
   const [allGroups, setAllGroups] = useState<BlogGroup[]>([])
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -98,6 +99,7 @@ export function BlogGroupEditorPage() {
           setKeyword(group.keyword ?? '')
           setDescription(group.description ?? '')
           setParentId(group.parentId ?? '')
+          setShowTimestamp(group.showTimestamp !== false)
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load editor.')
@@ -124,6 +126,7 @@ export function BlogGroupEditorPage() {
         keyword: keyword || null,
         description: description || null,
         parentId: parentId || null,
+        showTimestamp,
       }
 
       if (isEdit && id) {
@@ -305,6 +308,23 @@ export function BlogGroupEditorPage() {
                   Create the group first, then you can upload a thumbnail.
                 </p>
               )}
+            </div>
+
+            <div className="post-editor-card">
+              <div className="post-editor-card-head">
+                <h2>Display</h2>
+              </div>
+              <label className="post-editor-field post-editor-check">
+                <span>
+                  <input
+                    type="checkbox"
+                    checked={showTimestamp}
+                    onChange={(e) => setShowTimestamp(e.target.checked)}
+                  />
+                  Show post timestamps
+                </span>
+                <small>Show publish dates for posts in this group on the website</small>
+              </label>
             </div>
 
             <div className="post-editor-card">
