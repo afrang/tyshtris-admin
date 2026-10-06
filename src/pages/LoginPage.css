@@ -10,9 +10,9 @@
   position: relative;
   min-height: 100dvh;
   display: grid;
-  place-items: center;
+  place-items: safe center;
   padding: 2rem 1.25rem 2.5rem;
-  overflow: hidden;
+  overflow: auto;
   background:
     radial-gradient(120% 80% at 50% -10%, rgba(95, 125, 151, 0.22), transparent 55%),
     radial-gradient(90% 60% at 80% 100%, rgba(201, 164, 92, 0.08), transparent 50%),
@@ -150,7 +150,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.35rem;
   animation: stage-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -235,6 +235,14 @@
   border-color: rgba(201, 164, 92, 0.7);
   box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.14);
   background: rgba(12, 16, 24, 0.92);
+}
+
+.login-captcha {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 65px;
+  margin-top: 0.15rem;
 }
 
 .login-error {

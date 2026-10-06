@@ -33,6 +33,10 @@ const messages = {
     signingIn: 'Signing in…',
     enterControlCenter: 'Enter Control Center',
     signInFailed: 'Sign-in failed.',
+    captchaRequired: 'Please complete the captcha challenge.',
+    captchaLoadFailed:
+      'Captcha failed to load. Allow this domain in Cloudflare Turnstile, then retry.',
+    captchaRetry: 'Retry captcha',
   },
   fa: {
     dashboard: 'داشبورد',
@@ -63,6 +67,10 @@ const messages = {
     signingIn: 'در حال ورود…',
     enterControlCenter: 'ورود به مرکز کنترل',
     signInFailed: 'ورود ناموفق بود.',
+    captchaRequired: 'لطفاً چالش امنیتی را تکمیل کنید.',
+    captchaLoadFailed:
+      'بارگذاری کپچا ناموفق بود. این دامنه را در Cloudflare Turnstile مجاز کنید و دوباره تلاش کنید.',
+    captchaRetry: 'تلاش دوباره کپچا',
   },
 } as const
 

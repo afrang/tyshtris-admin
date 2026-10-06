@@ -7,6 +7,10 @@ on:
         description: Public CMS API base URL (e.g. https://api.example.com)
         required: true
         type: string
+      VITE_TURNSTILE_SITE_KEY:
+        description: Cloudflare Turnstile site key (public)
+        required: true
+        type: string
 
 concurrency:
   group: docker-${{ github.workflow }}-${{ github.ref }}
@@ -59,3 +63,4 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             VITE_API_URL=${{ inputs.VITE_API_URL }}
+            VITE_TURNSTILE_SITE_KEY=${{ inputs.VITE_TURNSTILE_SITE_KEY }}

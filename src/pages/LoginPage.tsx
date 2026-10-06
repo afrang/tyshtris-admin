@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { login } from '../lib/api'
 import { isAuthenticated, persistSession } from '../lib/auth'
 import { UiLanguageSwitch, useUiLanguage } from '../i18n/UiLanguage'
+import { Turnstile, isTurnstileConfigured } from '../components/Turnstile'
 import './LoginPage.css'
 
 export function LoginPage() {
@@ -11,6 +12,8 @@ export function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const [captchaKey, setCaptchaKey] = useState(0)
   const { direction, t } = useUiLanguage()
 
   if (isAuthenticated()) {
@@ -20,14 +23,22 @@ export function LoginPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setError(null)
+
+    if (isTurnstileConfigured() && !captchaToken) {
+      setError(t('captchaRequired'))
+      return
+    }
+
     setLoading(true)
 
     try {
-      const result = await login(email.trim(), password)
+      const result = await login(email.trim(), password, captchaToken)
       persistSession(result)
       navigate('/', { replace: true })
     } catch (err) {
       setError(err instanceof Error ? err.message : t('signInFailed'))
+      setCaptchaToken(null)
+      setCaptchaKey((value) => value + 1)
     } finally {
       setLoading(false)
     }
@@ -84,9 +95,17 @@ export function LoginPage() {
             />
           </label>
 
+          <div className="login-captcha">
+            <Turnstile key={captchaKey} theme="dark" onToken={setCaptchaToken} />
+          </div>
+
           {error ? <p className="login-error" role="alert">{error}</p> : null}
 
-          <button className="login-submit" type="submit" disabled={loading}>
+          <button
+            className="login-submit"
+            type="submit"
+            disabled={loading || (isTurnstileConfigured() && !captchaToken)}
+          >
             {loading ? t('signingIn') : t('enterControlCenter')}
           </button>
         </form>
